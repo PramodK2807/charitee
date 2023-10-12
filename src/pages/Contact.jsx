@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Helmet } from 'react-helmet';
 
 const Contact = () => {
   const [name, setName] = useState('');
@@ -9,7 +10,6 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!name || !email || !message) {
-      alert('Please fill all fields');
       setSuccess(false);
       return false;
     } else {
@@ -22,6 +22,14 @@ const Contact = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>Charitee - Contact Page</title>
+        <meta name='description' content='This is a charitee contact page' />
+        <meta property='og:title' content='Charitee Contact Page' />
+        <meta property='og:description' content='Charitee Contact Page' />
+        <link rel='canonical' href='charitee.com' />
+      </Helmet>
+
       <div className='contact'>
         <div className='container'>
           <h1 className='position-absolute py-3 mb-5 bottom-0 text-light'>

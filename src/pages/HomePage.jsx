@@ -1,8 +1,23 @@
-// import CompSecond from '../components/CompSecond';
+import { Helmet } from 'react-helmet';
 
 const HomePage = () => {
   return (
     <div>
+
+      {/* SEO */}
+
+      <Helmet>
+        <title>Charitee - HomePage</title>
+        <meta name='description' content='This is a charitee website' />
+        <meta property='og:title' content='Charitee' />
+        <meta
+          property='og:description'
+          content='Charitee'
+        />
+        <link rel='canonical' href='charitee.com' />
+      </Helmet>
+
+
       <div className='homepage'>
         <div className='position-relative container'>
           <div className='row min_height align-items-center text-light'>
