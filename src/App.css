@@ -1,38 +1,100 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+a {
+  text-decoration: none !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+ul {
+  list-style: none;
 }
 
-.App-header {
-  background-color: #282c34;
+/* Navbar */
+
+nav {
+  position: sticky !important;
+  top: 0;
+  z-index: 100 !important;
+  transition: all 0.5s ease;
+}
+
+.nav_clr {
+  background-color: #263b5c !important;
+}
+
+.nav_links a {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+
+/* Homepage */
+
+.homepage {
+  background: url('../src/assets/images/bg.webp');
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 100vw;
+  overflow-x: hidden !important;
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+  top: 0;
 }
 
-.App-link {
-  color: #61dafb;
+.min_height {
+  min-height: 100vh;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.homepage .title {
+  font-size: 70px;
+  line-height: 1;
+  letter-spacing: -.05em;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.homepage .subtitle {
+  font-size: 20px;
+}
+
+.second_container{
+  margin-top: 100vh;
+}
+
+/* Contact */
+
+.contact {
+  background: url('./assets/images/contact.webp');
+  min-height: 50vh;
+  width: 100%;
+  overflow-x: hidden !important;
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+}
+
+.contact_form{
+  margin-top: 50vh;
+}
+
+/* .contact_form input::placeholder, textarea::placeholder {
+  padding-left: 20px;
+} */
+.contact_form input, textarea {
+  padding-left: 20px;
+  border-radius: 5px ;
+}
+
+@media only screen and (max-width: 578px) {
+  .homepage .title {
+    font-size: 35px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .homepage .subtitle {
+    font-size: 16px;
   }
 }
