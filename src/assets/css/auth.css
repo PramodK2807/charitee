@@ -1,3 +1,15 @@
+
+.auth_active{
+    background: linear-gradient(-45deg, #263b5c, #4f8ef4);
+    transition: all 0.5s ease;
+    
+}
+.auth_active a{
+    color: white !important;
+    transition: all 0.5s ease;
+}
+
+
 .auth-form-container {
     display: flex;
     justify-content: center;
@@ -24,10 +36,11 @@ label {
     display: block;
 }
 
-input {
+input, select, textarea {
     width: 100%;
     padding: 5px;
     margin: 5px 0;
+    border: #0056b3 solid 2px;
 }
 
 button {
@@ -40,4 +53,21 @@ button {
 
 button:hover {
     background-color: #0056b3;
+}
+
+label{
+    font-size: 20px;
+}
+
+.auth_bg{
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(-45deg, #263b5c, #4f8ef4);
+    overflow: hidden !important;
+}
+
+.auth_btn{
+    background-color: #263b5c;
+    font-weight: bold;
+    font-size: 20px;
 }
