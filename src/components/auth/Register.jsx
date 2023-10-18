@@ -6,9 +6,8 @@ import '../../../src/assets/css/auth.css';
 import { useState } from 'react';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 
-const Register = ({JsonData}) => {
+const Register = ({ JsonData }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [gender, setGender] = useState('');
@@ -16,7 +15,7 @@ const Register = ({JsonData}) => {
   const [cpassword, setCPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (cpassword !== password) {
       Swal.fire({
@@ -41,13 +40,25 @@ const Register = ({JsonData}) => {
         timer: 3000,
       });
       return false;
-    } 
-    else {
+    } else {
       let user = {
-        name, email, password, cpassword, gender
-      }
-      let data = JsonData.users.push([...JsonData.users, user])
-      console.log(data);
+        name,
+        email,
+        password,
+        cpassword,
+        gender,
+      };
+      JsonData.users.push(user);
+      Swal.fire({
+        toast: true,
+        position: 'top-end',
+        icon: 'success',
+        title: 'Register Success',
+        showConfirmButton: false,
+        timerProgressBar: true,
+        timer: 3000,
+      });
+      navigate('/');
     }
   };
 

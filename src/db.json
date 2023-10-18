@@ -6,7 +6,7 @@
       "password": "1",
       "cpassword": "1",
       "name": "Pramod Kumar Kushwaha",
-      "email": "pramodkushwaha1328@gmail.com"
+      "email": "pramod@gmail.com"
     },
     {
       "id": "1697203416823",
@@ -15,15 +15,6 @@
       "cpassword": "123",
       "name": "Pramod",
       "email": "pramod@user.com"
-    }
-  ],
-  "contacts": [
-    {
-      "id":"1",
-      "name": "Pramod Kumar Kushwaha",
-      "email": "pramodkushwaha1328@gmail.com",
-      "message":"I want a wesbite for business of ecommerce",
-      "createdAt":"2023-10-15"
     }
   ]
 }

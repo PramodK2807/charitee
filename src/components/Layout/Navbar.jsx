@@ -72,6 +72,16 @@ const Navbar = () => {
                     Request
                   </NavLink>
                 </li>
+                <li className='px-2 mx-2'>
+                  <NavLink className='text-light' to='/todo'>
+                    Todo
+                  </NavLink>
+                </li>
+                <li className='px-2 mx-2'>
+                  <NavLink className='text-light' to='/cart'>
+                    Cart
+                  </NavLink>
+                </li>
               </ul>
             </div>
             <div>

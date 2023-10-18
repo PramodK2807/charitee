@@ -1,5 +1,6 @@
 import { Helmet } from 'react-helmet';
 import Contact from './Contact';
+import Products from '../components/Products/ProductDisplay/Products';
 
 const HomePage = () => {
 
@@ -36,8 +37,11 @@ const HomePage = () => {
           </div>
         </div>
       </div>
-      <div id='contact' style={{ marginTop: "44rem", marginBottom:'3rem', overflowX:"hidden" }}>
+      <div id='contact' style={{ marginTop: '44rem', overflowX: 'hidden' }}>
         <Contact />
+      </div>
+      <div>
+        <Products />
       </div>
     </div>
   );

@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
-import JsonContact from '../db.json';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { submitRequest } from '../store/features/requests/requestSlice';
 
 const Contact = () => {
   const [name, setName] = useState('');
@@ -10,6 +11,7 @@ const Contact = () => {
   const [success, setSuccess] = useState(null);
 
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   useEffect(() => {
     if (success === true || success === false) {
@@ -21,6 +23,11 @@ const Contact = () => {
     }
   }, [success]);
 
+  const formatDate = (timestamp) => {
+    const options = { day: '2-digit', month: 'short', year: 'numeric' };
+    return new Date(timestamp).toLocaleDateString(undefined, options);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!name || !email || !message) {
@@ -28,14 +35,17 @@ const Contact = () => {
       return false;
     } else {
       const createdAt = Date.now();
+      const formattedDate = formatDate(createdAt);
       const newContact = {
         id: createdAt.toString(),
         name: name,
         email: email,
         message: message,
-        createdAt: createdAt,
+        createdAt: formattedDate,
+        status:"Pending"
       };
-      JsonContact.contacts.push(newContact);
+      dispatch(submitRequest(newContact));
+      // JsonContact.contacts.push(newContact);
       setSuccess(true)
       navigate('/request')
     }
@@ -52,46 +62,47 @@ const Contact = () => {
       </Helmet>
 
       <div className='contact_form container'>
-        <h1 className='text-center py-5 text-light'>Contact Form</h1>
-        <div className='row justify-content-between align-items-center'>
-          <div className='col-md-5 border border-warning bg-white rounded'>
-            <form className='w-100' onSubmit={handleSubmit}>
-              <div className='row'>
-                <div className='col-6'>
-                  <div>
-                    <label className='mt-3 mb-2' htmlFor='name'>
-                      Name
-                    </label>
+        <h1 className='text-center py-5 text-light'>{''}</h1>
+        <div className='row justify-content-between align-items-center mx-3 mx-sm-0'>
+          <div className='col-md-6 col-xl-4 border border-warning bg-white rounded'>
+            <form className='w-100 px-md-3' onSubmit={handleSubmit}>
+              <h2 className='my-3 py-2 text-center contact_us_title'>
+                Contact Us
+              </h2>
+              <hr />
+              <div className='row '>
+                <div className='col-12'>
+                  <div className='contact_us_container'>
                     <input
                       type='text'
-                      placeholder='Enter Name'
+                      placeholder=''
                       value={name}
                       name='name'
                       onChange={(e) => setName(e.target.value)}
                     />
+                    <label className='mt-3 mb-2' htmlFor='name'>
+                      Name
+                    </label>
                   </div>
                 </div>
-                <div className='col-6'>
-                  <div>
-                    <label className='mt-3 mb-2' htmlFor='email'>
-                      Email
-                    </label>
+                <div className='col-12'>
+                  <div className='contact_us_container'>
                     <input
                       type='email'
-                      placeholder='Enter Email'
+                      placeholder=''
                       name='email'
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                     />
+                    <label className='mt-3 mb-2' htmlFor='email'>
+                      Email
+                    </label>
                   </div>
                 </div>
               </div>
-              <div>
-                <label className='mt-3 mb-2' htmlFor='message'>
-                  Message
-                </label>
+              <div className='contact_us_container'>
                 <textarea
-                  placeholder='Please enter message'
+                  placeholder=' '
                   className='w-100'
                   name='message'
                   id='message'
@@ -99,6 +110,9 @@ const Contact = () => {
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                 ></textarea>
+                <label className='mt-3 mb-2' htmlFor='message'>
+                  Message
+                </label>
               </div>
               {success === true && (
                 <p className='text-success text-center'>
@@ -120,10 +134,10 @@ const Contact = () => {
               </div>
             </form>
           </div>
-          <div className='col-md-6 my-5 my-md-0'>
+          <div className='col-md-6 col-xl-7 my-5 my-md-0'>
             <h2 className='text-warning fw-bold'>
-              Lets discuss something cool on your{' '}
-              <span className='text-success'>projects</span> need
+              Lets discuss something cool on your
+              <span className='text-success'> projects</span> need
             </h2>
             <div className='my-5'>
               <p className='fw-bold text-light'>
@@ -133,7 +147,7 @@ const Contact = () => {
                 <span>&#x1F4F1;</span> +91 123456789
               </p>
               <p className='fw-bold text-light'>
-                <span>&#x1F4CC;</span> Noida Sectore 63
+                <span>&#x1F4CC;</span> Noida Sector 63
               </p>
             </div>
           </div>
