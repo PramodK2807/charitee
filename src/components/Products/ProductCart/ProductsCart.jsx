@@ -64,7 +64,7 @@ const ProductsCart = () => {
           cartItems.map((data, i) => {
             return (
               <div key={i} className='col-12 my-2 box_shadow'>
-                <div className='row align-items-center justify-content-between'>
+                <div style={{fontFamily:"math"}} className='row align-items-center justify-content-between'>
                   <div className='col-4 col-md-2 position-relative p-0' style={{height:'150px'}}>
                     <img
                       src={data.thumbnail}

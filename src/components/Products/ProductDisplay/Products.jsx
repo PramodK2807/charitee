@@ -111,7 +111,7 @@ const Products = () => {
             </div>
           </div>
         </div>
-        <div className='row gy-5 gx-4'>
+        <div className='row g-1 g-md-3 g-lg-4 '>
           {isFetching ? (
             <h1 className='text-center'>Loading products...</h1>
           ) : allProducts && allProducts.length > 0 ? (
@@ -124,7 +124,7 @@ const Products = () => {
                   {/* <NavLink className="text-dark" to={`/products/${products.id}`}> */}
                   <div
                     data-aos='zoom-in-up'
-                    data-aos-offset='300'
+                    data-aos-offset='100'
                     className='cards bg-light rounded'
                   >
                     <div className='position-relative'>
@@ -133,7 +133,7 @@ const Products = () => {
                         to={`/products/${products.id}`}
                       >
                         <img
-                          className='w-100 thumbnail'
+                          className='w-100 thumbnail rounded'
                           src={products.thumbnail}
                           alt={products.title}
                         />
@@ -197,7 +197,7 @@ const Products = () => {
                     )}
                         </div> */}
                       <hr />
-                      <div className='row align-items-center justify-content-between  bottom-0 pb-2'>
+                      <div className='row align-items-center justify-content-around  bottom-0 pb-2'>
                         <div
                           style={{ fontSize: '14px' }}
                           className='col-4 fw-bold text-nowrap'
@@ -208,7 +208,7 @@ const Products = () => {
                           className='col-4 fw-bold text-nowrap text-center text-success'
                           style={{
                             borderLeft: '2px solid grey',
-                            fontSize: '14px',
+                            fontSize: '12px',
                           }}
                         >
                           {products.discountPercentage.toFixed(0)}% Off
@@ -216,7 +216,7 @@ const Products = () => {
                         <NavLink
                           style={{
                             borderLeft: '2px solid grey',
-                            fontSize: '14px',
+                            fontSize: '12px',
                           }}
                           className='d-none d-lg-block text-primary col-4 fw-bold text-nowrap text-end'
                           to={`/products/${products.id}`}

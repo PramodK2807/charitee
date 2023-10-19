@@ -52,7 +52,7 @@ const Contact = () => {
   };
 
   return (
-    <div className='contact pb-5'>
+    <div className='contact'>
       <Helmet>
         <title>Charitee - Contact Page</title>
         <meta name='description' content='This is a charitee contact page' />
@@ -61,7 +61,7 @@ const Contact = () => {
         <link rel='canonical' href='charitee.com' />
       </Helmet>
 
-      <div className='contact_form container'>
+      <div className='contact_form container py-5'>
         <h1 className='text-center py-5 text-light'>{''}</h1>
         <div className='row justify-content-between align-items-center mx-3 mx-sm-0'>
           <div className='col-md-6 col-xl-4 border border-warning bg-white rounded'>

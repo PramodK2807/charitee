@@ -24,6 +24,7 @@ nav {
   top: 0;
   z-index: 100 !important;
   transition: all 0.5s ease;
+  width: 100%;
 }
 
 .nav_clr {
@@ -77,17 +78,13 @@ nav {
 
 .homepage {
   background: url('../src/assets/images/bg.webp');
-  min-height: 100vh;
+  height: 100vh;
   width: 100%;
   overflow-x: hidden !important;
   background-position: center;
   background-size: cover;
   position: absolute;
   top: 0;
-}
-
-.min_height {
-  min-height: 100vh;
 }
 
 .homepage .title {
@@ -255,7 +252,7 @@ textarea:focus {
   cursor: pointer;
 }
 
-.search_icon{
+.search_icon {
   outline: none;
   border: 2px solid greenyellow;
 }
@@ -267,5 +264,11 @@ textarea:focus {
 
   .homepage .subtitle {
     font-size: 16px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .navbar_ul_clr {
+    background-color: grey;
   }
 }

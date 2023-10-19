@@ -99,22 +99,22 @@ const ProductsDetails = () => {
   }, []);
 
   return (
-    <div className='cart_bg'>
+    <div className='cart_bg py-5 min-vh-100'>
       <div className='container'>
-        <h1 className='text-center py-5'>
+        <h1 className='text-center'>
           Watching {data ? data.title : 'Product page'}
         </h1>
         {data ? (
           <div>
-            <div className='row gx-5'>
+            <div className='row gx-0 gx-md-5 my-5'>
               <div className='col-12 col-md-6'>
                 <div>
                   <div
-                    className='position-relative'
+                    className='position-relative bg-light my-5'
                     style={{ height: '400px' }}
                   >
                     <img
-                      className='w-100 h-100 rounded'
+                      className='w-100 h-100 rounded object-fit-contain'
                       src={thumbnail || data.thumbnail}
                       alt={data.title}
                     />
@@ -142,9 +142,9 @@ const ProductsDetails = () => {
                             style={{ transition: 'all 5s ease' }}
                             className='w-100 h-100 object-fit-fill rounded cursor-pointer'
                             src={image}
-                            alt={`Image ${i}`}
+                            alt={`products ${i}`}
                             onMouseEnter={() => setThumbnail(image)}
-                            onMouseLeave={() => setThumbnail(null)}
+                            // onMouseLeave={() => setThumbnail(null)}
                             key={i}
                           />
                         </div>
@@ -155,7 +155,7 @@ const ProductsDetails = () => {
                   </div>
                 </div>
               </div>
-              <div className='col-12 col-md-6'>
+              <div className='col-12 col-md-6 my-5'>
                 <div>
                   <div className='row bg-light py-4 rounded px-2'>
                     <h1 style={{ fontSize: '30px' }} className='title col-8'>
@@ -190,7 +190,7 @@ const ProductsDetails = () => {
                     </p>
                   </div>
 
-                  <div className='row'>
+                  <div className='row '>
                     <div className='col-6'>
                       <input
                         className='w-100 p-2 rounded'
@@ -200,7 +200,7 @@ const ProductsDetails = () => {
                         onChange={(e) => setQty(e.target.value)}
                       />
                     </div>
-                    <div className='col-6'>
+                    <div className='col-6 text-end'>
                       <button
                         className='rounded-pill bg-success text-light'
                         onClick={() => handleCart(data)}

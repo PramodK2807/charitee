@@ -13,6 +13,7 @@ import Todo from './components/Todo/Todo';
 import ProductsCart from './components/Products/ProductCart/ProductsCart';
 import ProductsDetails from './components/Products/ProductsDetails';
 import { useEffect } from 'react';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 import AOS from 'aos';
 import 'aos/dist/aos.css';

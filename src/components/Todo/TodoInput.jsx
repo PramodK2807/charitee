@@ -2,9 +2,10 @@ import { useState } from 'react';
 import { useSetRecoilState } from 'recoil';
 
 import { todoList } from '../../recoil/todoRecoil';
+import Swal from 'sweetalert2';
 
 const TodoInput = () => {
-  const [task, setTask] = useState();
+  const [task, setTask] = useState('');
   const [price, setPrice] = useState();
   const [qty, setQty] = useState(1);
   const [unit, setUnit] = useState(null);
@@ -13,6 +14,14 @@ const TodoInput = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (task === '' || !price || !unit) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Empty fields',
+      });
+
+      return false;
+    }
     const newTodo = {
       id: Date.now().toString(),
       title: task,
@@ -22,10 +31,10 @@ const TodoInput = () => {
       unit,
     };
     setTodoItem((oldTodos) => [newTodo, ...oldTodos]);
-    setTask('')
-    setPrice('')
-    setUnit(null)
-    setQty(1)
+    setTask('');
+    setPrice('');
+    setUnit(null);
+    setQty(1);
   };
   return (
     <div className='my-5 box_shadow bg-light rounded'>
@@ -50,50 +59,57 @@ const TodoInput = () => {
               onChange={(e) => setPrice(e.target.value)}
             />
           </div>
-          <div className='col-7 my-3 py-4 border rounded'>
-            <label className='text-center w-100 mb-3'>Select Quantity</label>
-            <div className='row align-items-center '>
-              <div className='col-7'>
-                <select
-                  name='qty'
-                  value={qty}
-                  onChange={(e) => setQty(e.target.value)}
-                >
-                  <option value='1'>1</option>
-                  <option value='2'>2</option>
-                  <option value='3'>3</option>
-                  <option value='4'>4</option>
-                  <option value='5'>5</option>
-                </select>
-              </div>
-              <div className='col-5 radio'>
-                <div>
-                  <input
-                    type='radio'
+
+          <div className='row align-items-center justify-content-around'>
+            <div className='col-md-7 my-3 py-4 border rounded'>
+              <label className='text-center w-100 mb-3'>Select Quantity</label>
+              <div className='row align-items-center '>
+                <div className='col-7'>
+                  <select
+                    className='rounded'
                     name='qty'
-                    value='Kg'
-                    id='kg'
-                    onChange={(e) => setUnit(e.target.value)}
-                  />
-                  <label htmlFor='kg'>Kg</label>
+                    value={qty}
+                    onChange={(e) => setQty(e.target.value)}
+                  >
+                    <option value='1'>1</option>
+                    <option value='2'>2</option>
+                    <option value='3'>3</option>
+                    <option value='4'>4</option>
+                    <option value='5'>5</option>
+                  </select>
                 </div>
-                <div>
-                  <input
-                    type='radio'
-                    name='qty'
-                    value='Litre'
-                    id='litre'
-                    onChange={(e) => setUnit(e.target.value)}
-                  />
-                  <label htmlFor='litre'>Litre</label>
+                <div className='col-5 radio'>
+                  <div>
+                    <input
+                      type='radio'
+                      name='qty'
+                      value='Kg'
+                      id='kg'
+                      onChange={(e) => setUnit(e.target.value)}
+                    />
+                    <label htmlFor='kg'>Kg</label>
+                  </div>
+                  <div>
+                    <input
+                      type='radio'
+                      name='qty'
+                      value='Litre'
+                      id='litre'
+                      onChange={(e) => setUnit(e.target.value)}
+                    />
+                    <label htmlFor='litre'>Litre</label>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className='col-2 my-5'>
-            <button className='w-100 fw-bold rounded' type='submit'>
-              Submit
-            </button>
+            <div className='col-md-3 my-2'>
+              <button
+                className='w-100 fw-bold rounded-pill bg-success'
+                type='submit'
+              >
+                Submit
+              </button>
+            </div>
           </div>
         </div>
       </form>

@@ -3,11 +3,8 @@ import Contact from './Contact';
 import Products from '../components/Products/ProductDisplay/Products';
 
 const HomePage = () => {
-
   return (
     <div>
-      {/* SEO */}
-
       <Helmet>
         <title>Charitee - HomePage</title>
         <meta name='description' content='This is a charitee website' />
@@ -19,7 +16,7 @@ const HomePage = () => {
       <div>
         <div className='homepage'>
           <div className='position-relative container'>
-            <div className='row min_height align-items-center text-light'>
+            <div className='row min-vh-100 align-items-center text-light'>
               <div className='col-12 col-md-8 col-lg-6 col-xl-5 col-xxl-4'>
                 <h1 className='title'>
                   Give a helping hand to those who need it
@@ -37,7 +34,8 @@ const HomePage = () => {
           </div>
         </div>
       </div>
-      <div id='contact' style={{ marginTop: '44rem', overflowX: 'hidden' }}>
+      <main style={{ minHeight: '85vh' }}></main>
+      <div id='contact' style={{ overflowX: 'hidden' }}>
         <Contact />
       </div>
       <div>

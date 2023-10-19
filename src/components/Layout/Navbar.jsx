@@ -6,14 +6,15 @@ const Navbar = () => {
   // const [isHovered, setIsHovered] = useState(false);
   const [colorChange, setColorchange] = useState(false);
   const [navBg, setNavBg] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const location = useLocation();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem('charitee_auth'));
 
-      //     location.pathname.includes('/auth') ||
-      // /^\/protected\//.test(location.pathname)
-    
+    //     location.pathname.includes('/auth') ||
+    // /^\/protected\//.test(location.pathname)
+
     setLocalData(userData);
     if (location.pathname !== '/') {
       setNavBg(true);
@@ -35,55 +36,75 @@ const Navbar = () => {
   const handleLogout = () => {
     localStorage.removeItem('charitee_auth');
     setLocalData(null);
-    navigate('/')
+    navigate('/');
   };
+
+  const closeNav = () => {
+    setHidden(!hidden);
+  }
   window.addEventListener('scroll', changeNavbarColor);
   return (
     <>
       <nav
-        className={`py-2 ${
+        className={`py-2 navbar navbar-expand-md ${
           colorChange ? 'nav_clr position-fixed z-5 w-100' : ''
         } ${navBg ? 'nav_clr' : ''}`}
       >
-        <div className='container'>
-          <div className='d-flex align-items-center justify-content-between'>
-            <div className='logo'>
-              <h1 className='text-light'>Charitee</h1>
-            </div>
-            <div className='nav_links'>
-              <ul className='d-flex align-items-center'>
-                <li className='px-2 mx-2'>
-                  <NavLink className='text-light' to='/'>
-                    Home
-                  </NavLink>
-                </li>
-                {/* <li className='px-2 mx-2'>
-                  <NavLink className='text-light' href='#contact'>
-                    Contact
-                  </NavLink>
-                </li> */}
-                <li className='px-2 mx-2'>
-                  <a href='/#contact' className='text-light'>
-                    Contact
-                  </a>
-                </li>
-                <li className='px-2 mx-2'>
-                  <NavLink className='text-light' to='/request'>
-                    Request
-                  </NavLink>
-                </li>
-                <li className='px-2 mx-2'>
-                  <NavLink className='text-light' to='/todo'>
-                    Todo
-                  </NavLink>
-                </li>
-                <li className='px-2 mx-2'>
-                  <NavLink className='text-light' to='/cart'>
-                    Cart
-                  </NavLink>
-                </li>
-              </ul>
-            </div>
+        <div class='container'>
+          <NavLink
+            style={{ fontSize: '40px', color: 'white', fontWeight: 'bold' }}
+            to='/'
+          >
+            Charitee
+          </NavLink>
+          <button
+            class='navbar-toggler bg-light'
+            type='button'
+            data-bs-toggle='collapse'
+            data-bs-target='#navbarNav'
+            // aria-controls='navbarNav'
+            // aria-expanded='true'
+            // aria-label='Toggle navigation'
+          >
+            <span class='navbar-toggler-icon'></span>
+          </button>
+          <div
+            class='collapse rounded navbar-collapse navbar_ul_clr justify-content-end mt-2 py-2 px-2'
+            id='navbarNav'
+          >
+            <ul
+              style={{
+                fontSize: '20px',
+                fontWeight: '500',
+                fontFamily: 'cursive',
+              }}
+              class='navbar-nav'
+            >
+              <li className='px-2 mx-2 py-2'>
+                <a onClick={closeNav} href='/#contact' className='text-light'>
+                  Contact
+                </a>
+              </li>
+              <li className='px-2 mx-2 py-2'>
+                <NavLink
+                  onClick={closeNav}
+                  className=' text-light'
+                  to='/request'
+                >
+                  Request
+                </NavLink>
+              </li>
+              <li className='px-2 mx-2 py-2'>
+                <NavLink onClick={closeNav} className='text-light' to='/todo'>
+                  Todo
+                </NavLink>
+              </li>
+              <li className='px-2 mx-2 py-2'>
+                <NavLink onClick={closeNav} className='text-light' to='/cart'>
+                  Cart
+                </NavLink>
+              </li>
+            </ul>
             <div>
               {localData ? (
                 <div className='user_logo position-relative'>
@@ -123,6 +144,7 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
+      
     </>
   );
 };
